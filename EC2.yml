@@ -1,0 +1,13 @@
+- hosts: localhost
+  remote_user: ec2-user
+  become: yes
+  tasks:
+   -  name: Installing AWS EC2
+      amazon.aws.ec2:
+       key_name: "ansible"
+       instance_type: t2.micro
+       region: us-east-2
+       image: ami-05bfbece1ed5beb54
+       count: 1
+       vpc_subnet_id: subnet-00a0e4c95cd4272cf
+       assign_public_ip: yes
